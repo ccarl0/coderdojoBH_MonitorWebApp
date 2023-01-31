@@ -1,0 +1,42 @@
+<!-- beehive.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beehive Monitor</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+
+    
+</head>
+
+<body>
+    <header>
+        <h1>{{ selected_hive.name }}</h1>
+    </header>
+    <nav>
+        <a id="homeButton" href="http://127.0.0.1:5000/">Beehives</a>
+        <ul>
+            {% for hive in beehives %}
+            <li><a href="{{ url_for('beehive', hive_id=hive[1]) }}">{{ hive[1] }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
+    <div>
+        <h1> {{ selected_hive[0]['sName'] }} </h1>
+    </div>
+    <main class="beehive-data">
+        <div class="bee-data">
+            <p>bat: {{ bat[-10]['value'] }} V</p>
+            <p>huml2: {{ huml2[-10]['value'] }} %</p>
+            <p>hum0: {{ hum0[-10]['value'] }} %</p>
+            <p>sound1: {{ sound1[-10]['value'] }} X</p>
+            <p>templ2: {{ templ2[-10]['value'] }} °C</p>
+            <p>temp0: {{ temp0[-10]['value'] }} °C</p>
+        </div>
+    </main>
+</body>
+
+</html>

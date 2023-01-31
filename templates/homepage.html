@@ -1,0 +1,28 @@
+<!-- homepage.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beehive Monitor</title>
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+  <header>
+    <h1>Beehive Monitor</h1>
+  </header>
+  <nav>
+    <a id="homeButton" href="http://127.0.0.1:5000/">Beehives</a>
+    <ul>
+      {% for hive in beehives %}
+      <li><a href="{{ url_for('beehive', hive_id=hive[1]) }}">{{ hive[1] }}</a></li>
+      {% endfor %}
+    </ul>
+  </nav>
+</body>
+
+</html>
